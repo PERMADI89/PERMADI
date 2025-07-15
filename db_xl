@@ -1,0 +1,6 @@
+cd my_project_github
+git init               # kalau belum diinisialisasi
+git add .              # tambahkan semua file termasuk .sql
+git commit -m "Add database dump"
+git remote add origin https://github.com/PERMADI89/PERMADI
+git push -u origin main
