@@ -5,7 +5,7 @@ st.markdown('bismilah')
 import mysql.connector
 import pandas as pd
 connection = mysql.connector.connect(
-  host = "127.0.0.1",
+  host = "localhost",
   port = "3306",
   user = "root",
   password = "",
