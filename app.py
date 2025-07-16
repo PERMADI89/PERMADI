@@ -1,12 +1,12 @@
 import streamlit as st
 from database import init_db, insert_data, fetch_all
 
-st.set_page_config(page_title="Formulir Data Karyawan", layout="centered")
+st.set_page_config(page_title="Data Karyawan Jatelindo", layout="centered")
 
 # Inisialisasi DB
 init_db()
 
-st.title("🧾 Formulir Data Karyawan")
+st.title("🧾 Data Karyawan Jatelindo")
 
 with st.form("data_form"):
     name = st.text_input("Nama Lengkap")
