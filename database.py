@@ -27,7 +27,7 @@ def insert_data(name, email, umur, divisi):
 def fetch_all():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
-    c.execute("SELECT name, email, umur, divisi FROM users")
+    c.execute("SELECT name as nama, email as email, umur, divisi FROM users")
     data = c.fetchall()
     conn.close()
     return data
