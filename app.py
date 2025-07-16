@@ -7,7 +7,7 @@ st.set_page_config(page_title="Dashboard IT Support", layout="wide")
 init_db()
 
 st.markdown("## 📊 Dashboard IT Support")
-st.write("Welcome Neng panel data IT Support.")
+st.write("Welcome di panel data IT Support.")
 
 tab1, tab2 = st.tabs(["📋 Data Input", "📑 Data Tersimpan"])
 
