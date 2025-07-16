@@ -17,7 +17,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-def insert_data(name, email, umur):
+def insert_data(name, email, umur, divisi):
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     c.execute("INSERT INTO users (name, email, umur, divisi) VALUES (?, ?, ?,?)", (name, email, umur, divis))
