@@ -13,7 +13,7 @@ with st.form("data_form"):
     email = st.text_input("Email")
     umur = st.number_input("Umur", min_value=1, max_value=120)
     divisi = st.selectbox("Divisi", ["IT", "HR", "Finance", "Marketing"])
-    submitted = st.form_submit_button("Kirim")
+    submitted = st.form_submit_button("Submit")
 
     if submitted:
         if name and email and divisi:
