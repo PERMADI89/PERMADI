@@ -30,6 +30,5 @@ def fetch_all():
     c.execute("SELECT name, email, umur, divisi FROM users")
     data = c.fetchall()
     conn.close()
-    columns = ["Nama", "Email", "Umur", "Divisi"]
     return pd.DataFrame(rows, columns=columns)
     
