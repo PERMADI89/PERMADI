@@ -6,7 +6,7 @@ st.set_page_config(page_title="Data Input App", layout="centered")
 # Inisialisasi DB
 init_db()
 
-st.title("📋 Formulir Data Pengguna")
+st.title("📋 FORMULIR INPUT KINERJA ITSUPPORT")
 
 with st.form("data_form"):
     name = st.text_input("Nama Lengkap")
@@ -16,7 +16,7 @@ with st.form("data_form"):
 
     if submitted:
         if name and email:
-            insert_data(name, email, umur)
+            insert_data(name, email, umur, divisi)
             st.success("✅ Data berhasil disimpan!")
         else:
             st.warning("⚠️ Mohon lengkapi semua kolom!")
