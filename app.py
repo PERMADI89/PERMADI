@@ -28,7 +28,7 @@ with tab1:
                 st.warning("⚠️ Mohon lengkapi semua kolom!")
 
 with tab2:
-    st.markdown("### 📋 Tabel Data Karyawan")
+    st.markdown("### 📋 Tabel Data IT Support")
     data = fetch_all()
     if data:
         st.table(data)
