@@ -24,6 +24,6 @@ with st.form("data_form"):
 st.write("## 📑 Data Tersimpan")
 data = fetch_all()
 if data:
-    st.table(data)
+    st.dataframe(data)
 else:
     st.info("Belum ada data.")
