@@ -12,6 +12,7 @@ with st.form("data_form"):
     name = st.text_input("Nama Lengkap")
     email = st.text_input("Email")
     umur = st.number_input("Umur", min_value=1, max_value=120)
+    divisi = st.text_input ("Divisi")
     submitted = st.form_submit_button("Kirim")
 
     if submitted:
