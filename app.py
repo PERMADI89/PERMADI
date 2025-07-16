@@ -6,7 +6,7 @@ st.set_page_config(page_title="Data Input App", layout="centered")
 # Inisialisasi DB
 init_db()
 
-st.title("📋 FORMULIR INPUT KINERJA ITSUPPORT")
+st.title("📋 INPUT KINERJA ITSUPPORT")
 
 with st.form("data_form"):
     name = st.text_input("Nama Lengkap")
