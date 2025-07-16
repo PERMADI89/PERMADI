@@ -1,6 +1,6 @@
-# Aplikasi Streamlit: Formulir Data Karyawan
+# Aplikasi Streamlit: Dashboard Karyawan
 
-Aplikasi web sederhana menggunakan Streamlit dan SQLite.
+Aplikasi web dashboard berbasis Streamlit dan SQLite.
 
 ## Menjalankan secara lokal
 
