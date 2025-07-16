@@ -1,17 +1,20 @@
-# Aplikasi Streamlit: Dashboard Karyawan
+# Dashboard Admin Karyawan
 
-Aplikasi web dashboard berbasis Streamlit dan SQLite.
+Fitur:
+- Login Admin
+- Tambah & lihat data
+- Statistik divisi dan umur
 
-## Menjalankan secara lokal
+## Login Default
+- Username: `admin`
+- Password: `1234`
 
+## Jalankan Lokal
 ```bash
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
 ## Deploy ke Streamlit Cloud
-
-1. Push project ini ke GitHub.
-2. Buka https://share.streamlit.io
-3. Hubungkan ke repositori GitHub kamu.
-4. Pilih file `app.py` sebagai main file.
+1. Upload ke GitHub
+2. Jalankan via https://share.streamlit.io
