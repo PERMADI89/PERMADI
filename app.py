@@ -50,7 +50,7 @@ else:
             keterangan = st.text_area("Keterangan")
             rca = st.text_area("Root Cause Analysis (RCA)")
             solusi = st.text_area("Solusi")
-            status = st.selectbox("Status", ["Open", "On Progress", "Closed"])
+            status = st.selectbox("Status", ["Open", "Succes", "Unsucces"])
             submitted = st.form_submit_button("Simpan")
             if submitted and nama and email and aktivitas:
                 insert_data(nama, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status)
@@ -69,7 +69,7 @@ else:
                 new_status = st.selectbox(
                     "Update Status", 
                     ["Open", "On Progress", "Closed"], 
-                    index=["Open", "Succes", "Unsusses"].index(row["Status"]),
+                    index=["Open", "Succes", "Unsucces"].index(row["Status"]),
                     key=f"status_{i}"
                 )
                 if st.button("Update", key=f"update_{i}"):
