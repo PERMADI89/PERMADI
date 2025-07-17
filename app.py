@@ -69,7 +69,7 @@ else:
                 new_status = st.selectbox(
                     "Update Status", 
                     ["Open", "On Progress", "Closed"], 
-                    index=["Open", "On Progress", "Closed"].index(row["Status"]),
+                    index=["Open", "Succes", "Unsusses"].index(row["Status"]),
                     key=f"status_{i}"
                 )
                 if st.button("Update", key=f"update_{i}"):
