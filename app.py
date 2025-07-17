@@ -17,6 +17,7 @@ if not st.session_state.logged_in:
     if st.button("Login"):
         if check_login(username, password):
             st.session_state.logged_in = True
+            st.session_state.username = username
             st.success("Login berhasil!")
         else:
             st.error("Username atau password salah.")
@@ -36,7 +37,7 @@ else:
     elif menu == "➕ Tambah Data":
         st.header("➕ Tambah Data Aktivitas")
         with st.form("form"):
-            nama = st.text_input("Nama")
+            nama = st.selectbox("Nama", [st.session_state.username])
             email = st.text_input("Email")
             umur = st.number_input("Umur", min_value=1, max_value=100)
             divisi = st.selectbox("Divisi", [
@@ -50,9 +51,9 @@ else:
             keterangan = st.text_area("Keterangan")
             rca = st.text_area("Root Cause Analysis (RCA)")
             solusi = st.text_area("Solusi")
-            status = st.selectbox("Status", ["Open", "Succes", "Unsucces"])
+            status = st.selectbox("Status", ["Open", "On Progress", "Closed"])
             submitted = st.form_submit_button("Simpan")
-            if submitted and nama and email and aktivitas:
+            if submitted and email and aktivitas:
                 insert_data(nama, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status)
                 st.success("Data berhasil ditambahkan!")
 
@@ -68,8 +69,8 @@ else:
                 st.write(row.drop("Status"))
                 new_status = st.selectbox(
                     "Update Status", 
-                    ["Open", "Succes", "Unsucces"], 
-                    index=["Open", "Succes", "Unsucces"].index(row["Status"]),
+                    ["Open", "On Progress", "Closed"], 
+                    index=["Open", "On Progress", "Closed"].index(row["Status"]),
                     key=f"status_{i}"
                 )
                 if st.button("Update", key=f"update_{i}"):
