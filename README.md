@@ -1,20 +1,12 @@
-# Dashboard Aktivitas Karyawan
+# Permadi Dashboard (Streamlit)
 
-Fitur:
-- Login Admin
-- Tambah data aktivitas lengkap
-- Statistik per status dan divisi
+## Cara Menjalankan
+1. Install dependensi:
 
-## Login Default
+
+2. Jalankan aplikasi:
+
+
+## Login
 - Username: `admin`
 - Password: `1234`
-
-## Jalankan Lokal
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-## Deploy ke Streamlit Cloud
-1. Upload ke GitHub
-2. Jalankan via https://share.streamlit.io

@@ -1,12 +1,10 @@
 import streamlit as st
 from auth import check_login
 from dashboard import show_dashboard
-from database import init_db, insert_data, fetch_all
+from database import init_db, insert_data, fetch_all, update_status
 import pandas as pd
 
 st.set_page_config(page_title="Admin Dashboard Extended", layout="wide")
-
-# Inisialisasi database
 init_db()
 
 if "logged_in" not in st.session_state:
@@ -34,6 +32,7 @@ else:
 
     if menu == "📊 Dashboard":
         show_dashboard()
+
     elif menu == "➕ Tambah Data":
         st.header("➕ Tambah Data Aktivitas")
         with st.form("form"):
@@ -56,19 +55,39 @@ else:
             if submitted and nama and email and aktivitas:
                 insert_data(nama, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status)
                 st.success("Data berhasil ditambahkan!")
+
     elif menu == "📑 Lihat Data":
         st.header("📑 Data Aktivitas")
         data = fetch_all()
-        st.dataframe(data)
+        df = pd.DataFrame(data, columns=[
+            "Tanggal", "Nama", "Email", "Umur", "Divisi", "Aktivitas", 
+            "Layanan", "Keterangan", "RCA", "Solusi", "Status"
+        ])
+        for i, row in df.iterrows():
+            with st.expander(f"{row['Nama']} - {row['Email']}"):
+                st.write(row.drop("Status"))
+                new_status = st.selectbox(
+                    "Update Status", 
+                    ["Open", "On Progress", "Closed"], 
+                    index=["Open", "On Progress", "Closed"].index(row["Status"]),
+                    key=f"status_{i}"
+                )
+                if st.button("Update", key=f"update_{i}"):
+                    update_status(row["Email"], new_status)
+                    st.success("Status berhasil diperbarui!")
+                    st.experimental_rerun()
+
     elif menu == "📈 Lihat Data Rekap":
         st.header("📈 Rekap Aktivitas per Divisi")
-        df = fetch_all()
-        if df.empty:
-            st.info("Belum ada data.")
-        else:
-            rekap = df.groupby("divisi")["status"].value_counts().unstack().fillna(0)
-            st.dataframe(rekap)
-            st.bar_chart(rekap)
+        data = fetch_all()
+        df = pd.DataFrame(data, columns=[
+            "Tanggal", "Nama", "Email", "Umur", "Divisi", "Aktivitas", 
+            "Layanan", "Keterangan", "RCA", "Solusi", "Status"
+        ])
+        rekap = df.groupby("Divisi")["Status"].value_counts().unstack().fillna(0)
+        st.dataframe(rekap)
+        st.bar_chart(rekap)
+
     elif menu == "🔓 Logout":
         st.session_state.logged_in = False
         st.experimental_rerun()
