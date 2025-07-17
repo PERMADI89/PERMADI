@@ -68,7 +68,7 @@ else:
                 st.write(row.drop("Status"))
                 new_status = st.selectbox(
                     "Update Status", 
-                    ["Open", "On Progress", "Closed"], 
+                    ["Open", "Succes", "Unsucces"], 
                     index=["Open", "Succes", "Unsucces"].index(row["Status"]),
                     key=f"status_{i}"
                 )
