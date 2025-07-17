@@ -1,9 +1,9 @@
-# Dashboard Admin Karyawan
+# Dashboard Aktivitas Karyawan
 
 Fitur:
 - Login Admin
-- Tambah & lihat data
-- Statistik divisi dan umur
+- Tambah data aktivitas lengkap
+- Statistik per status dan divisi
 
 ## Login Default
 - Username: `admin`
