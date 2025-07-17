@@ -2,6 +2,7 @@ import streamlit as st
 from auth import check_login
 from dashboard import show_dashboard
 from database import init_db, insert_data, fetch_all
+import pandas as pd
 
 st.set_page_config(page_title="Admin Dashboard Extended", layout="wide")
 
@@ -23,7 +24,13 @@ if not st.session_state.logged_in:
             st.error("Username atau password salah.")
 else:
     st.sidebar.title("📁 Menu")
-    menu = st.sidebar.radio("Navigasi", ["📊 Dashboard", "➕ Tambah Data", "📑 Lihat Data", "🔓 Logout"])
+    menu = st.sidebar.radio("Navigasi", [
+        "📊 Dashboard", 
+        "➕ Tambah Data", 
+        "📑 Lihat Data", 
+        "📈 Lihat Data Rekap", 
+        "🔓 Logout"
+    ])
 
     if menu == "📊 Dashboard":
         show_dashboard()
@@ -33,7 +40,12 @@ else:
             nama = st.text_input("Nama")
             email = st.text_input("Email")
             umur = st.number_input("Umur", min_value=1, max_value=100)
-            divisi = st.selectbox("Divisi", ["IT", "HR", "Finance", "Marketing"])
+            divisi = st.selectbox("Divisi", [
+                "Commant Center", 
+                "DevOps", 
+                "Database", 
+                "IT Ops XL"
+            ])
             aktivitas = st.text_input("Aktivitas")
             layanan = st.text_input("Layanan")
             keterangan = st.text_area("Keterangan")
@@ -48,6 +60,15 @@ else:
         st.header("📑 Data Aktivitas")
         data = fetch_all()
         st.dataframe(data)
+    elif menu == "📈 Lihat Data Rekap":
+        st.header("📈 Rekap Aktivitas per Divisi")
+        df = fetch_all()
+        if df.empty:
+            st.info("Belum ada data.")
+        else:
+            rekap = df.groupby("divisi")["status"].value_counts().unstack().fillna(0)
+            st.dataframe(rekap)
+            st.bar_chart(rekap)
     elif menu == "🔓 Logout":
         st.session_state.logged_in = False
         st.experimental_rerun()
