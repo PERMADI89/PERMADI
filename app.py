@@ -10,7 +10,8 @@ init_db()
 if "logged_in" not in st.session_state:
     st.session_state.logged_in = False
 
-if not st.session_state.logged_in:
+
+    if not st.session_state.logged_in:
     st.title("🔐 Admin Login")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -19,8 +20,9 @@ if not st.session_state.logged_in:
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success("Login berhasil!")
+            st.experimental_rerun()  # ⬅️ Tambahkan ini
         else:
-            st.error("Username atau password salah.")
+            st.error("Username atau password salah.")    
 else:
     st.sidebar.title("📁 Menu")
     menu = st.sidebar.radio("Navigasi", [
