@@ -40,7 +40,6 @@ else:
         with st.form("form"):
             nama = st.selectbox("Nama", [st.session_state.username])
             email = st.text_input("Email")
-            umur = st.number_input("Umur", min_value=1, max_value=100)
             divisi = st.selectbox("Divisi", [
                 "Commant Center", 
                 "DevOps", 
@@ -55,14 +54,14 @@ else:
             status = st.selectbox("Status", ["Open", "On Progress", "Closed"])
             submitted = st.form_submit_button("Simpan")
             if submitted and email and aktivitas:
-                insert_data(nama, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status)
+                insert_data(nama, email, divisi, aktivitas, layanan, keterangan, rca, solusi, status)
                 st.success("Data berhasil ditambahkan!")
 
     elif menu == "📑 Lihat Data":
         st.header("📑 Data Aktivitas")
         data = fetch_all()
         df = pd.DataFrame(data, columns=[
-            "Tanggal", "Nama", "Email", "Umur", "Divisi", "Aktivitas", 
+            "Tanggal", "Nama", "Email", "Divisi", "Aktivitas", 
             "Layanan", "Keterangan", "RCA", "Solusi", "Status"
         ])
         for i, row in df.iterrows():
@@ -83,7 +82,7 @@ else:
         st.header("📈 Rekap Aktivitas per Divisi")
         data = fetch_all()
         df = pd.DataFrame(data, columns=[
-            "Tanggal", "Nama", "Email", "Umur", "Divisi", "Aktivitas", 
+            "Tanggal", "Nama", "Email", "Divisi", "Aktivitas", 
             "Layanan", "Keterangan", "RCA", "Solusi", "Status"
         ])
         rekap = df.groupby("Divisi")["Status"].value_counts().unstack().fillna(0)
