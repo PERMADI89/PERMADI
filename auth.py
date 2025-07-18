@@ -1,2 +1,2 @@
 def check_login(username, password):
-    return username == "admin" and password == "123"
+    return username == "permadi" and password == "1234"
