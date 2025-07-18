@@ -77,7 +77,7 @@ else:
                 if st.button("Update", key=f"update_{i}"):
                     update_status(row["Email"], new_status)
                     st.success("Status berhasil diperbarui!")
-                    st.experimental_rerun()
+                    st.rerun()
 
     elif menu == "📈 Lihat Data Rekap":
         st.header("📈 Rekap Aktivitas per Divisi")
