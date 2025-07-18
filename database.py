@@ -12,7 +12,6 @@ def init_db():
             tanggal TEXT,
             name TEXT,
             email TEXT,
-            umur INTEGER,
             divisi TEXT,
             aktivitas TEXT,
             layanan TEXT,
@@ -25,16 +24,16 @@ def init_db():
     conn.commit()
     conn.close()
 
-def insert_data(name, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status):
+def insert_data(name, email, divisi, aktivitas, layanan, keterangan, rca, solusi, status):
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     tanggal = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     c.execute("""
         INSERT INTO users (
-            tanggal, name, email, umur, divisi, aktivitas, layanan, 
+            tanggal, name, email, divisi, aktivitas, layanan, 
             keterangan, rca, solusi, status
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (tanggal, name, email, umur, divisi, aktivitas, layanan, keterangan, rca, solusi, status))
+    """, (tanggal, name, email, divisi, aktivitas, layanan, keterangan, rca, solusi, status))
     conn.commit()
     conn.close()
 
@@ -42,7 +41,7 @@ def fetch_all():
     conn = sqlite3.connect(DB_NAME)
     c = conn.cursor()
     c.execute("""
-        SELECT tanggal, name, email, umur, divisi, aktivitas, layanan, 
+        SELECT tanggal, name, email, divisi, aktivitas, layanan, 
                keterangan, rca, solusi, status 
         FROM users
     """)
