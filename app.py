@@ -35,8 +35,8 @@ else:
     if menu == "📊 Dashboard":
         show_dashboard()
 
-    elif menu == "➕ Tambah Data":
-        st.header("➕ Input Data Kasus ")
+    elif menu == "➕ Input Data":
+        st.header("➕ Input Data ")
         with st.form("form"):
             nama = st.selectbox("Nama", [st.session_state.username])
             email = st.text_input("Email")
