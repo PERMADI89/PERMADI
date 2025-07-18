@@ -26,7 +26,7 @@ else:
     st.sidebar.title("📁 Menu")
     menu = st.sidebar.radio("Navigasi", [
         "📊 Dashboard", 
-        "➕ Tambah Data", 
+        "➕ Input Data", 
         "📑 Lihat Data", 
         "📈 Lihat Data Rekap", 
         "🔓 Logout"
@@ -36,7 +36,7 @@ else:
         show_dashboard()
 
     elif menu == "➕ Tambah Data":
-        st.header("➕ Tambah Data Aktivitas")
+        st.header("➕ Input Data Kasus ")
         with st.form("form"):
             nama = st.selectbox("Nama", [st.session_state.username])
             email = st.text_input("Email")
