@@ -1,23 +1,42 @@
 import streamlit as st
 
 def show_dashboard():
-    st.title("📊 Web Commant Center")
-    st.info("Selamat datang di Dashboard Commant Center. Silakan pilih menu di sidebar.")
-    st.info("Tetap Menyerah jangan Semangat")
-    
-    st.info("Nama - Tim Commant Center")
-    st.info("Andre 'Taulani'")
-    st.info("Herman 'Syah'")
-    st.info("Yusuf 'Kala'")
-    st.info("Wahyu 'Sesat'")
-    st.info("Permadi 'New Daddy'")
-    
-    st.info("Nama - Tim DevOps")
-    st.info("Junedi 'Anying'")
-    st.info("Aji 'Nomoto'")
+    st.title("🧠 Web Command Center")
+    st.markdown("## 👋 Selamat Datang di Dashboard Command Center")
+    st.success("🚀 *Tetap Semangat, Jangan Menyerah!*")
 
-    st.info("Nama - Tim DB")
-    st.info("Heru 'Roker Dangdut'")
-    st.info("Zaenal 'M'")
+    st.markdown("---")
 
+    st.subheader("🛡️ Tim Command Center")
+    cc_team = [
+        "👨‍💻 Andre *'Taulani'*",
+        "🧙 Herman *'Syah'*",
+        "🦉 Yusuf *'Kala'*",
+        "👻 Wahyu *'Sesat'*",
+        "🎤 Permadi *'New Daddy'*"
+    ]
+    for member in cc_team:
+        st.markdown(f"- {member}")
 
+    st.markdown("---")
+
+    st.subheader("⚙️ Tim DevOps")
+    devops_team = [
+        "🧑‍🔧 Junedi *'Anying'*",
+        "💻 Aji *'Nomoto'*"
+    ]
+    for member in devops_team:
+        st.markdown(f"- {member}")
+
+    st.markdown("---")
+
+    st.subheader("🗄️ Tim DB")
+    db_team = [
+        "🎸 Heru *'Roker Dangdut'*",
+        "📊 Zaenal *'M'*"
+    ]
+    for member in db_team:
+        st.markdown(f"- {member}")
+
+    st.markdown("---")
+    st.info("📌 Gunakan menu di sidebar untuk mulai mencatat aktivitas, lihat rekap, atau update status.")
