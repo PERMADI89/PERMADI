@@ -19,7 +19,6 @@ if "logged_in" not in st.session_state:
             st.session_state.logged_in = True
             st.session_state.username = username
             st.success("Login berhasil!")
-            st.experimental_rerun()
         else:
             st.error("Username atau password salah.")    
 else:
