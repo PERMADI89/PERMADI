@@ -32,7 +32,7 @@ def insert_data(name, email, divisi, aktivitas, layanan, keterangan, rca, solusi
         INSERT INTO users (
             tanggal, name, email, divisi, aktivitas, layanan, 
             keterangan, rca, solusi, status
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (tanggal, name, email, divisi, aktivitas, layanan, keterangan, rca, solusi, status))
     conn.commit()
     conn.close()
